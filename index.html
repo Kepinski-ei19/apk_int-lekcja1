@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>tak</title>
+	</head>
+	<body>
+		<script>
+			//uzywaj tylko znakow ascii
+			let imie = "Stahoz";
+			let nazwisko = "Kepinski";
+
+			let alfabet = "abcdefghijklmnopqrstuvwxyz";
+			let cryptoPattern = "qwertyuiopasdfghjklzxcvbnm";
+			let kopniak = 3;
+
+			function StringReverse(tekst = "") {
+				let converted = tekst.split("");
+				let reversed = converted.reverse();
+				let joined = reversed.join("");
+				return joined;
+			}
+			function EncryptString(tekst = "") {
+				let lowercase = tekst.toLowerCase();
+				let replaced = new Array();
+
+				for (i = 0; i < lowercase.length; i++) {
+					let index = alfabet.indexOf(lowercase[i]);
+
+					index = index + kopniak;
+					if (index >= alfabet.length) {
+						index = index - alfabet.length;
+						replaced.push(cryptoPattern[index]);
+					} else {
+						replaced.push(cryptoPattern[index]);
+					}
+				}
+
+				return replaced.join("");
+			}
+
+			//output reversed strings
+			document.write(
+				StringReverse(imie) + " " + StringReverse(nazwisko) + "<br>"
+			);
+
+			//output encrypted string (soon)
+			document.write(EncryptString(imie) + " " + EncryptString(nazwisko));
+		</script>
+	</body>
+</html>
